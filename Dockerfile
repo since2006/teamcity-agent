@@ -4,6 +4,10 @@ ARG jdkLinuxComponentMD5SUM='6fb237cb31a9c4474bf5f79798d94943'
 
 FROM jetbrains/teamcity-agent:${TEAMCITY_VERSION}
 
+ARG TEAMCITY_VERSION
+ARG jdkLinuxComponent
+ARG jdkLinuxComponentMD5SUM
+
 USER root
 
 # 安装 JDK 8
