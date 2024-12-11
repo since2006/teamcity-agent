@@ -19,7 +19,8 @@ jobs:
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Build and Push Docker Image
+        # Java8
+      - name: Build and Push Docker Image - [Java8]
         uses: docker/build-push-action@v6
         env:
           TEAMCITY_VERSION: 2024.12-linux-sudo
@@ -34,3 +35,20 @@ jobs:
             TEAMCITY_VERSION=${{ env.TEAMCITY_VERSION }}
             jdkLinuxComponent=https://corretto.aws/downloads/resources/8.432.06.1/amazon-corretto-8.432.06.1-linux-x64.tar.gz
             jdkLinuxComponentMD5SUM=6fb237cb31a9c4474bf5f79798d94943
+
+        # Java21
+      - name: Build and Push Docker Image - [Java21]
+        uses: docker/build-push-action@v6
+        env:
+          TEAMCITY_VERSION: 2024.12-linux-sudo
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: |
+            linux/amd64
+          push: true
+          tags: since2006/teamcity-agent:${{ env.TEAMCITY_VERSION }}-java21
+          build-args: |
+            TEAMCITY_VERSION=${{ env.TEAMCITY_VERSION }}
+            jdkLinuxComponent=https://corretto.aws/downloads/latest/amazon-corretto-21-x64-linux-jdk.tar.gz
+            jdkLinuxComponentMD5SUM=e3b446d298feae6944e25b126f7ca0c0
