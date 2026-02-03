@@ -23,7 +23,7 @@ jobs:
       - name: Build and Push Docker Image - [Java8]
         uses: docker/build-push-action@v6
         env:
-          TEAMCITY_VERSION: 2025.03.2-linux-sudo
+          TEAMCITY_VERSION: 2025.11.2-linux-sudo
         with:
           context: .
           file: ./Dockerfile
@@ -40,7 +40,7 @@ jobs:
       - name: Build and Push Docker Image - [Java21]
         uses: docker/build-push-action@v6
         env:
-          TEAMCITY_VERSION: 2025.03.2-linux-sudo
+          TEAMCITY_VERSION: 2025.11.2-linux-sudo
         with:
           context: .
           file: ./Dockerfile
